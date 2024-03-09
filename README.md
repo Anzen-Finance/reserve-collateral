@@ -1,33 +1,66 @@
-# Anzen Wrapped Private Credit Token (wPCT) Collateral Plugin
+## Foundry
 
-For use of Anzen Private Credit Token as stablecoin collateral
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
-## Summary
+Foundry consists of:
 
-This plugin allows `wPCT` (Anzen Wrapped Private Credit Token) holders to use their tokens as collateral in the Reserve Protocol.
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-`wPCT` is a non-upgradeable ERC20 token that earns the user the right to an increasing quantity of Anzen Private Credit Token (PCT) over time. Anzen PCT is a rebasing ERC20 that earns yield from off-chain real world assets (RWA). It is always backed by 1 USD worth of real world assets as collateral. At all times, `wPCT` can be redeemed at the specified exchange rate for `PCT`. `wPCT` can be swapped on Uniwap via a `wPCT/USDC` pool, or can be redeemd for `PCT` which can subsequently be redeemed for 1 USDC from the protocol directly.
+## Documentation
 
-In the background, the Anzen protocol as a borrower of defi capital deploys deposited USDC in credit assets, and pays an interest rate to wPCT holders.
+https://book.getfoundry.sh/
 
-The redeemable PCT amount per wPCT can be retrieved by calling `exchangeRate()` on the wPCT contract deployed on Ethereum mainnet at `0x414ac1853329b3704df0caf7749cd296c7f3b750`.
+## Usage
 
-No function needs be called in order to update `refPerTok()`. `totalAssets()` is already a function of the block timestamp and increases as time passes.
+### Build
 
-No rewards other than the ever-increasing exchange rate.
+```shell
+$ forge build
+```
 
-`wPCT` contract: <https://etherscan.io/token/0x414ac1853329b3704df0caf7749cd296c7f3b750#code>
+### Test
 
-## Implementation
+```shell
+$ forge test
+```
 
-### Units
+### Format
 
-| tok   | ref  | target | UoA |
-| ----- | ---- | ------ | --- |
-| wPCT  | PCT | USD    | USD |
+```shell
+$ forge fmt
+```
 
-### Functions
+### Gas Snapshots
 
-#### refPerTok {ref/tok}
+```shell
+$ forge snapshot
+```
 
-`return divuu(IStakedFrax(address(erc20)).totalAssets(), IStakedFrax(address(erc20)).totalSupply());`
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```
