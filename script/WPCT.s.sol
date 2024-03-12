@@ -2,7 +2,7 @@
 pragma solidity ^0.8.20;
 
 import {Script, console} from "forge-std/Script.sol";
-import "../src/WPCTCollateral.sol";
+import "../src/wPCTCollateral.sol";
 import {CollateralConfig} from "../src/FiatCollateral.sol";
 import {AggregatorV3Interface} from "../src/interfaces/AggregatorV3Interface.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
@@ -31,7 +31,7 @@ contract DeployWPCTScript is Script {
             2,
             86400
         );
-        WPCTCollateral collateral = new WPCTCollateral(collateralConfig, 0);
+        wPCTCollateral collateral = new wPCTCollateral(collateralConfig, 0);
         vm.stopBroadcast();
     }
 }

@@ -16,7 +16,7 @@ interface IWPCT {
  * tar = USD
  * UoA = USD
  */
-contract WPCTCollateral is AppreciatingFiatCollateral {
+contract wPCTCollateral is AppreciatingFiatCollateral {
     // solhint-disable no-empty-blocks
 
     /// @param config.chainlinkFeed {UoA/ref} price of wPCT in USD terms
